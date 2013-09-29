@@ -14,8 +14,8 @@ package object util {
   import impl._
   def sumIfTrue(num: Int, 
       nonstop: (Int) => Boolean, //Œp‘±‚·‚éðŒŽ®
-      expr: (Int) => Boolean = (n:Int) => true, //‰ÁŽZ‚·‚éðŒŽ®
-      next: (Int) => Int = (n: Int) => n+1): Int = //ŽŸ‚Ì’l‚Ì“ü—Í
+      expr: (Int) => Boolean = (n) => true, //‰ÁŽZ‚·‚éðŒŽ®
+      next: (Int) => Int = (n) => n+1): Int = //ŽŸ‚Ì’l‚Ì“ü—Í
     if(nonstop(num)) 
       expr(num) * num + sumIfTrue(next(num), nonstop, expr, next)
       else 0
@@ -33,7 +33,7 @@ object Problem2 {
   val fibonacci = () => { //ƒNƒ[ƒWƒƒ
     var num = 1
     var beforenum = 1
-    (n:Int) => { //n:dammy
+    (n: Int) => { //n is dammy
       val ret = num + beforenum
       beforenum = num
       num = ret
@@ -41,6 +41,6 @@ object Problem2 {
     }
   }
   def answer() = println("Problem2 answer is " +
-    util.sumIfTrue(1, (n) => n<=4000000-1, (n: Int) => n % 2 == 0, 
+    util.sumIfTrue(1, (n) => n<=4000000-1, (n) => n % 2 == 0, 
         fibonacci()))
 }
